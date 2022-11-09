@@ -12,25 +12,20 @@
 <script>
   export default {
     name:'TagMenu',
-    mixins: [],
-    components: {},
+    
     props: {
       menus: {
         type: Array,
-        default : () => {
-          return [];
-        }
+        default : () => [],
       }
     },
+
     data(){
       return {
         selectedTag: 0,
       }
     },
-    computed: {
-    },
-    created () {
-    },
+
     methods: {
       selectTag(idx){
         this.selectedTag = idx;

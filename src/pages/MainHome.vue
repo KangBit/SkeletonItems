@@ -1,27 +1,18 @@
 <template>
   <div class="container">
-    <tag-menu 
-      :menus="foodCategories"
-      @onChangeMenu="handleChageMenu"
-    ></tag-menu>
-    <ul class="list-container">
-      <skeleton-item
-        v-for="(food,idx) in foodList" :key="idx"
-      >
-
-      </skeleton-item>
-    </ul>
+    <food-list></food-list>
+    <drink-list></drink-list>
   </div>
 </template>
 
 <script>
-  import TagMenu from "../components/TagMenu.vue"
-  import SkeletonItem from "../components/ListItem/SkeletonItem.vue"
+  import FoodList from "../components/FoodList.vue";
+  import DrinkList from "../components/DrinkList.vue";
 
   export default {
     name:'MainHome',
     mixins: [],
-    components: {TagMenu, SkeletonItem},
+    components: {FoodList, DrinkList},
     props: {
     },
     data(){
