@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <h1>음료 목록</h1>
     <tag-menu 
       :menus="menus"
       @onChangeMenu="handleChageMenu"
@@ -20,7 +21,7 @@
     },
     data(){
       return {
-        menus: [ "한식", "양식", "중식", "일식"],
+        menus: [ "커피", "티바나", "블렌디드", "기타"],
         totalList: [
           ["a","b","c","d","e","f",],
           ["1","2","3","4","5","6","7","8","9","10",],

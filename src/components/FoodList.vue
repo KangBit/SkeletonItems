@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <h1>음식 목록</h1>
     <tag-menu 
       :menus="menus"
       @onChangeMenu="handleChageMenu"

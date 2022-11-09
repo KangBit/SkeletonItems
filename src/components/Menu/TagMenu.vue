@@ -43,7 +43,7 @@
   display: flex;
   justify-content: space-evenly;
   .tag-item{
-    width: 3rem;
+    min-width: 2.5rem;
     padding: 0.5rem;
     border-radius: 0.5rem;
     background-color: lightgray;
