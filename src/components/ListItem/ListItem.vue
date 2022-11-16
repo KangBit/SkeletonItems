@@ -1,20 +1,36 @@
 <template>
   <li class="skeleton-container">
-    <div class="image-container"></div>
+    <div class="image-container">
+      <img 
+        v-if="item.img.length !== null" 
+        :src="item.img"
+      />
+    </div>
     <div class="content-container">
-      <p class="name"></p>
-      <p class="description"></p>
-      <p class="price"></p>
+      <p class="name">{{item.name}}</p>
+      <p class="description">{{item.description}}</p>
+      <p class="price">{{item.price}}</p>
     </div>
   </li>
 </template>
 
 <script>
   export default {
-    name:'SkeletonItem',
+    name:'ListItem',
     mixins: [],
     components: {},
     props: {
+      item:{
+        type: Object,
+        default: () => {
+          return {
+            name: "",
+            description: "",
+            price: "",
+            img: null,
+          }
+        }
+      }
     },
     data(){
       return {
@@ -39,6 +55,8 @@
   p{
     margin: 0;
     min-height: 1rem;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
   }
 }
 
@@ -53,6 +71,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 8px;
   }
 }
 
@@ -63,20 +82,10 @@
   margin-left: 1rem;
   flex-direction: column;
   justify-content: space-around;
-}
-
-.name{
-  width: 13rem;
-  background-color: lightgray;
-}
-
-.description{
-  width: 100%;
-  background-color: lightgray;
+  text-align: left;
 }
 
 .price{
-  width: 7rem;
-  background-color: lightgray;
+  color: palevioletred;
 }
 </style>

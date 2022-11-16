@@ -17,7 +17,11 @@
       menus: {
         type: Array,
         default : () => [],
-      }
+      },
+      disable: {
+        type: Boolean,
+        default: false,
+      },
     },
 
     data(){
@@ -28,6 +32,9 @@
 
     methods: {
       selectTag(idx){
+        if(this.disable){
+          return;
+        }
         this.selectedTag = idx;
         this.$emit("onChangeMenu", idx);
       }
@@ -43,8 +50,9 @@
   display: flex;
   justify-content: space-evenly;
   .tag-item{
-    min-width: 2.5rem;
+    width: 25%;
     padding: 0.5rem;
+    margin-inline: 0.1rem;
     border-radius: 0.5rem;
     background-color: lightgray;
     cursor: pointer;
