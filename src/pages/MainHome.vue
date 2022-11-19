@@ -37,19 +37,14 @@
             {name:"미트파이",description:"고기를 주재료로 사용한 파이.",price:"9,700", img:require("@/assets/imgs/food/afood07.jpg")},
             {name:"핫도그",description:"기다란 모양의 소시지, 또는 그것을 핫도그 번에 끼운 음식",price:"7,000", img:require("@/assets/imgs/food/afood08.jpg")},
           ],
+          [],
+          [],
         ],
         drinkList: [
           [
             {name:"",description:"",price:"", img:require("@/assets/imgs/drink/tea01.jpg")},
             {name:"",description:"",price:"", img:require("@/assets/imgs/drink/tea02.jpg")},
             {name:"",description:"",price:"", img:require("@/assets/imgs/drink/tea03.jpg")},
-          //   {name:"",description:"",price:"", img:""},
-          //   {name:"",description:"",price:"", img:""},
-          //   {name:"",description:"",price:"", img:""},
-          //   {name:"",description:"",price:"", img:""},
-          //   {name:"",description:"",price:"", img:""},
-          //   {name:"",description:"",price:"", img:""},
-          //   {name:"",description:"",price:"", img:""},
           ],
           [
             {name:"커피1",description:"",price:"", img:require("@/assets/imgs/drink/coffee01.jpg")},

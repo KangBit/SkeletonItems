@@ -10,53 +10,48 @@
 </template>
 
 <script>
-  export default {
-    name:'SkeletonItem',
-    mixins: [],
-    components: {},
-    props: {
-    },
-    data(){
-      return {
-      }
-    },
-    computed: {
-    },
-    created () {
-    },
-    methods: {
-    },
-  }
+export default {
+  name: "SkeletonItem",
+  mixins: [],
+  components: {},
+  props: {},
+  data() {
+    return {};
+  },
+  computed: {},
+  created() {},
+  methods: {},
+};
 </script>
 
 <style scoped lang="scss">
-.skeleton-container{
+.skeleton-container {
   display: flex;
   width: 100%;
   margin-block: 1rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid lightgray;
-  p{
+  p {
     margin: 0;
     min-height: 1rem;
   }
 }
 
-.image-container{
+.image-container {
   position: relative;
   flex-shrink: 0;
   width: 100px;
   height: 100px;
   background-color: lightgray;
   border-radius: 8px;
-  img{
+  img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
 }
 
-.content-container{
+.content-container {
   display: flex;
   width: 100%;
   position: relative;
@@ -65,17 +60,17 @@
   justify-content: space-around;
 }
 
-.name{
+.name {
   width: 13rem;
   background-color: lightgray;
 }
 
-.description{
+.description {
   width: 100%;
   background-color: lightgray;
 }
 
-.price{
+.price {
   width: 7rem;
   background-color: lightgray;
 }

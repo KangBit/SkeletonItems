@@ -1,26 +1,22 @@
 <template>
   <div>
-    <h2>{{title}}</h2>
-    <tag-menu 
+    <h2>{{ title }}</h2>
+    <tag-menu
       :menus="menus"
       :disable="isLoading"
       @onChangeMenu="handleChageMenu"
     ></tag-menu>
 
-    <!-- <ul class="list-container">
-      <skeleton-item
-        v-for="idx in size" :key="idx"
-      ></skeleton-item>
-    </ul> -->
-
-    <ul v-if="list.length === 0" class="list-container">
-      <skeleton-item
-        v-for="idx in 5" :key="idx"
-      ></skeleton-item>
+    <ul v-show="isShowSkeletonItems" class="list-container">
+      <skeleton-item v-for="idx in skeletonSize" :key="idx"></skeleton-item>
     </ul>
-    <ul v-else class="list-container">
+    <ul v-show="isShowNoItem" class="list-container">
+      <h1>NO-ITEM</h1>
+    </ul>
+    <ul v-show="isShowItems" class="list-container">
       <list-item
-        v-for="(item,idx) in list" :key="idx"
+        v-for="(item, idx) in list"
+        :key="idx"
         :item="item"
       ></list-item>
     </ul>
@@ -28,64 +24,85 @@
 </template>
 
 <script>
-  import TagMenu from "../Menu/TagMenu.vue";
-  import SkeletonItem from "../ListItem/SkeletonItem.vue";
-  import ListItem from "../ListItem/ListItem.vue";
+import TagMenu from "../Menu/TagMenu.vue";
+import SkeletonItem from "../ListItem/SkeletonItem.vue";
+import ListItem from "../ListItem/ListItem.vue";
 
-  export default {
-    name:'ListComponent',
-    mixins: [],
-    components: {
-      TagMenu,
-      SkeletonItem,
-      ListItem,
+export default {
+  name: "ListComponent",
+  mixins: [],
+  components: {
+    TagMenu,
+    SkeletonItem,
+    ListItem,
+  },
+  props: {
+    title: {
+      type: String,
+      default: "",
     },
-    props: {
-      title: {
-        type: String,
-        default: ""
-      },
-      menus: {
-        type: Array,
-        default: () => [],
-      },
-      totalList:{
-        type: Array,
-        default: () => [],
-      },
+    menus: {
+      type: Array,
+      default: () => [],
     },
-    data(){
-      return {
-        isLoading: false,
-        list: [],
-        size: 5,
+    totalList: {
+      type: Array,
+      default: () => [],
+    },
+  },
+  data() {
+    return {
+      isLoading: false,
+      skeletonSize: 5,
+      list: null,
+    };
+  },
+  computed: {
+    isShowSkeletonItems() {
+      return this.list === null;
+    },
+    isShowNoItem() {
+      return Array.isArray(this.list) && this.list.length === 0;
+    },
+    isShowItems() {
+      return !this.isShowSkeletonItems && !this.isShowNoItem;
+    },
+  },
+  watch: {
+    list(curr, prev) {
+      if (!Array.isArray(prev)) {
+        this.skeletonSize = 5;
+        return;
+      }
+
+      if (prev.length === 0) {
+        this.skeletonSize = 1;
+      } else {
+        this.skeletonSize = prev.length;
       }
     },
-    computed: {
-    },
-    created () {
+  },
+  created() {
+    this.isLoading = true;
+    this.list = this.totalList[0];
+    this.isLoading = false;
+  },
+  methods: {
+    handleChageMenu(idx) {
       this.isLoading = true;
-      this.list = this.totalList[0];
-      this.isLoading = false;
-    },
-    methods: {
-      handleChageMenu (idx) {
-        this.isLoading = true;
-        this.list = [];
-        this.size = 0
+      this.list = null;
 
-        setTimeout(() => {
-          this.size = 8
-          this.list = this.totalList[idx];
-          this.isLoading = false;
-        }, 500);
-      },
+      setTimeout(() => {
+        this.list = this.totalList[idx];
+        this.isLoading = false;
+      }, 3000);
     },
-  }
+  },
+};
 </script>
 
 <style scoped>
-.list-container{
+.list-container {
   padding: 0;
   list-style: none;
 }
